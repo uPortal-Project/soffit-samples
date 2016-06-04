@@ -32,6 +32,7 @@ configurations {
 }
 
 dependencies {
+    compile("net.sf.ehcache:ehcache:${ehcacheVersion}")
     compile("org.apereo.portal:soffit:${soffitVersion}")
     compile('org.springframework.boot:spring-boot-starter-cache')
     compile('org.springframework.boot:spring-boot-starter-web')
