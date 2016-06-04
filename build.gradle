@@ -15,7 +15,6 @@ apply plugin: 'eclipse-wtp'
 apply plugin: 'spring-boot' 
 apply plugin: 'war'
 
-
 war {
     baseName = 'soffit-samples'
     version = '0.0.1-SNAPSHOT'
@@ -24,6 +23,7 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
@@ -32,12 +32,12 @@ configurations {
 }
 
 dependencies {
+    compile("org.apereo.portal:soffit:${soffitVersion}")
     compile('org.springframework.boot:spring-boot-starter-cache')
     compile('org.springframework.boot:spring-boot-starter-web')
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
-
 
 eclipse {
     classpath {
