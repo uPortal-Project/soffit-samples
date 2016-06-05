@@ -90,6 +90,9 @@
    | Turn up logging for specific packages
    +-->
 
+  <logger name="org.apereo.portlet.soffit" additivity="false" level="DEBUG">
+    <appender-ref ref="LOG" />
+  </logger>
   <logger name="org.apereo.portal" additivity="false" level="DEBUG">
     <appender-ref ref="LOG" />
   </logger>
