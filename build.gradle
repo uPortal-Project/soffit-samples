@@ -36,7 +36,10 @@ dependencies {
     compile("org.apereo.portal:soffit:${soffitVersion}")
     compile('org.springframework.boot:spring-boot-starter-cache')
     compile('org.springframework.boot:spring-boot-starter-web')
+
+    providedRuntime('org.apache.tomcat.embed:tomcat-embed-jasper')
     providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+
     testCompile('org.springframework.boot:spring-boot-starter-test')
 }
 
