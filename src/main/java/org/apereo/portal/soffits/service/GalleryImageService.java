@@ -17,16 +17,12 @@
  * under the License.
  */
 
-package org.apereo.portal.soffits;
+package org.apereo.portal.soffits.service;
 
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+import java.util.List;
 
-public class ServletInitializer extends SpringBootServletInitializer {
+public interface GalleryImageService {
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SoffitSamplesApplication.class);
-    }
+    List<GalleryImage> getImages();
 
 }

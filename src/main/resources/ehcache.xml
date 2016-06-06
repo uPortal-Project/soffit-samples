@@ -27,11 +27,11 @@
         overflowToDisk="false"
         memoryStoreEvictionPolicy="LFU"/>
 
-    <!-- cache name="fooCache"
-        maxElementsInMemory="100"
+    <cache name="galleryImageCache"
+        maxElementsInMemory="25"
         eternal="false"
-        timeToLiveSeconds="120"
+        timeToLiveSeconds="900"
         overflowToDisk="false"
-        memoryStoreEvictionPolicy="LRU"/-->
+        memoryStoreEvictionPolicy="LRU"/>
 
 </ehcache>

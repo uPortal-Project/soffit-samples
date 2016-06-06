@@ -17,16 +17,30 @@
  * under the License.
  */
 
-package org.apereo.portal.soffits;
+package org.apereo.portal.soffits.service;
 
-import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.boot.context.web.SpringBootServletInitializer;
+public class GalleryImage {
 
-public class ServletInitializer extends SpringBootServletInitializer {
+    private final String title;
+    private final String url;
+    private final String thumbnail;
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(SoffitSamplesApplication.class);
+    public GalleryImage(String title, String url, String thumbnail) {
+        this.title = title;
+        this.url = url;
+        this.thumbnail = thumbnail;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
     }
 
 }
