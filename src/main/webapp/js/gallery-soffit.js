@@ -23,40 +23,36 @@ var up = up || {};
         var gallery = $(container);
         var spinner = gallery.find(configs.selectors.spinner);
 
-        $.ajax({
-            // Flickr API is SSL only:
-            // https://code.flickr.net/2014/04/30/flickr-api-going-ssl-only-on-june-27th-2014/
-            url: 'https://api.flickr.com/services/rest/',
-            data: {
-                format: 'json',
-                method: 'flickr.interestingness.getList',
-                api_key: '7617adae70159d09ba78cfec73c13be3' // jshint ignore:line
-            },
+        $.ajax(configs.serviceUrl, {
             dataType: 'jsonp',
-            jsonp: 'jsoncallback'
-        }).done(function (result) {
-            var linksContainer = gallery.find(configs.selectors.iconsContainer);
-            // Add the demo images as links with thumbnails to the page:
-            $.each(result.photos.photo, function (index, photo) {
-                var baseUrl = 'https://farm' + photo.farm + '.static.flickr.com/'
-                        + photo.server + '/' + photo.id + '_' + photo.secret;
-                $('<a/>').append($('<img>').prop('src', baseUrl + '_s.jpg'))
-                    .prop('href', baseUrl + '_b.jpg')
-                    .prop('title', photo.title)
-                    .attr('data-gallery', '')
-                    .appendTo(linksContainer);
-            })
-        });
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.error('Failed to fetch gallery images:  ' + textStatus);
+            },
+            success: function(data, textStatus, jqXHR) {
+                var linksContainer = gallery.find(configs.selectors.iconsContainer);
 
-        gallery.find(configs.selectors.iconsContainer).click(function(event) {
-            var target = event.target || event.srcElement,
-                    link = target.src ? target.parentNode : target,
-                    options = {index: link, event: event},
-                    links = this.getElementsByTagName('a');
-            blueimp.Gallery(links, options);
-        });
+                // Add the demo images as links with thumbnails to the page
+                $.each(data, function (index, photo) {
+                    $('<a/>').append($('<img>').prop('src', photo.thumbnail))
+                        .prop('href', photo.url)
+                        .prop('title', photo.title)
+                        .attr('data-gallery', '')
+                        .appendTo(linksContainer);
+                })
 
-        spinner.slideUp();
+                // Initialize the gallery
+                gallery.find(configs.selectors.iconsContainer).click(function(event) {
+                    var target = event.target || event.srcElement,
+                            link = target.src ? target.parentNode : target,
+                            options = {index: link, event: event},
+                            links = this.getElementsByTagName('a');
+                    blueimp.Gallery(links, options);
+                });
+
+                // Remove the spinner
+                spinner.slideUp();
+            }
+        });
 
     };
 
