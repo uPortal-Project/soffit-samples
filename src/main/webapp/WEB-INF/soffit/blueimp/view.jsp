@@ -24,30 +24,50 @@
 <link rel="stylesheet" href="${urlBase}/css/blueimp-gallery.min.css">
 
 <style>
+#${n} blockquote {
+    padding: 0 0 0 16px;
+}
+#${n} .bg-logo {
+    display: inline-block;
+    height: 80px;
+}
 #${n} .bg-spinner {
     padding: 16px;
-    font-size: 400%;
+    font-size: 72px;
     text-align: center;
+}
+#${n} #blueimp-gallery i.fa {
+    font-size: 66%;
 }
 </style>
 
 <div id="${n}">
-    <div class="bg-spinner">
-        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+    <blockquote>
+        <h2 class="h1 text-primary">
+            <img class="bg-logo img-responsive" src="${urlBase}/img/instagram.jpg" />
+            @tikkido on Instagram!
+        </h2>
+    </blockquote>
+
+    <div class="panel panel-default">
+        <div class="panel-body text-center">
+            <div class="bg-spinner text-primary">
+                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i>
+            </div>
+            <div class="bg-icons"></div>
+        </div>
     </div>
 
     <!-- The Gallery as lightbox dialog, should be a child element of the document body -->
     <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
         <div class="slides"></div>
         <h3 class="title"></h3>
-        <a class="prev">&lt;</a>
-        <a class="next">&gt;</a>
+        <a class="prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></a>
+        <a class="next"><i class="fa fa-chevron-right" aria-hidden="true"></i></a>
         <a class="close">x</a>
         <a class="play-pause"></a>
         <ol class="indicator"></ol>
     </div>
-
-    <div class="bg-icons"></div>
 </div>
 
 <script type="text/javascript">
@@ -58,7 +78,10 @@
 <script src="${urlBase}/js/gallery-soffit.js"></script>
 <script type="text/javascript">
     jQuery(function() {
-        up.blueimpGallery.Gallery(up.jQuery, '#${n}');
+        var options = {
+            serviceUrl: "${urlBase}/api/gallery/v1-0/images"
+        };
+        up.blueimpGallery.Gallery(up.jQuery, '#${n}', options);
     });
     // Clear jQuery (again) from the global namespace
     var jQuery = undefined;
