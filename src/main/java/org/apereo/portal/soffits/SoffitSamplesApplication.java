@@ -45,11 +45,13 @@ public class SoffitSamplesApplication {
         return new SoffitRendererController();
     }
 
+    /**
+     * Tells Spring Boot to use EhCache for caching.  (Configuration in ehcache.xml)
+     */
     @Bean
     public CacheManager cacheManager() {
         return new EhCacheCacheManager(ehCacheCacheManager().getObject());
     }
-
     @Bean
     public EhCacheManagerFactoryBean ehCacheCacheManager() {
         EhCacheManagerFactoryBean cmfb = new EhCacheManagerFactoryBean();
