@@ -1,0 +1,17 @@
+[
+    {
+        "url": "https://www.facebook.com/",
+        "title": "Facebook",
+        "strategy": "HTTP_HEAD"
+    },
+    {
+        "url": "https://www.yahoo.com/",
+        "title": "Yahoo!",
+        "strategy": "HTTP_HEAD"
+    },
+    {
+        "url": "http://localhost:8090/not-a-real-url.wtf/",
+        "title": "Blackboard",
+        "strategy": "HTTP_HEAD"
+    }
+]

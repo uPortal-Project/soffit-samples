@@ -34,4 +34,11 @@
         overflowToDisk="false"
         memoryStoreEvictionPolicy="LRU"/>
 
+    <cache name="healthCheckCache"
+        maxElementsInMemory="100"
+        eternal="false"
+        timeToLiveSeconds="120"
+        overflowToDisk="false"
+        memoryStoreEvictionPolicy="LRU"/>
+
 </ehcache>
