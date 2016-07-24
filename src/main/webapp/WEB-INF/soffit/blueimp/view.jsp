@@ -17,7 +17,7 @@
 --%>
 <jsp:directive.include file="/WEB-INF/soffit/include.jsp"/>
 
-<c:set var="n" value="${soffit.request.namespace}" />
+<c:set var="n" value="${soffit.request.windowId}" />
 <c:set var="req" value="${pageContext.request}" />
 <c:set var="urlBase" value="${req.scheme}://${req.serverName}:${req.localPort}${req.contextPath}" />
 

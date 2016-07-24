@@ -21,7 +21,7 @@
 <%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %>
 <jsp:directive.include file="/WEB-INF/soffit/include.jsp"/>
 
-<c:set var="n" value="${soffit.request.namespace}" />
+<c:set var="n" value="${soffit.request.windowId}" />
 
 <div id="${n}">
 
