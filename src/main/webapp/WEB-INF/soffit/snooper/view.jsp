@@ -35,6 +35,9 @@
         </c:forEach>
     </ul>
 
+    <h3>Bearer</h3>
+    <pre>${bearer}</pre>
+
     <h3>Payload JSON</h3>
     <pre><%=new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(request.getAttribute("soffit"))%></pre>
 

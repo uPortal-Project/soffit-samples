@@ -19,7 +19,7 @@
 
 package org.apereo.portal.soffits;
 
-import org.apereo.portlet.soffit.renderer.SoffitRendererController;
+import org.apereo.portlet.soffit.renderer.SoffitRenderConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.CacheManager;
@@ -27,9 +27,11 @@ import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
 
 @SpringBootApplication
+@Import(SoffitRenderConfiguration.class)
 @EnableCaching
 public class SoffitSamplesApplication {
 
@@ -40,10 +42,6 @@ public class SoffitSamplesApplication {
     /**
      * Enables soffits within this application.
      */
-    @Bean
-    public SoffitRendererController soffitRendererController() {
-        return new SoffitRendererController();
-    }
 
     /**
      * Tells Spring Boot to use EhCache for caching.  (Configuration in ehcache.xml)
