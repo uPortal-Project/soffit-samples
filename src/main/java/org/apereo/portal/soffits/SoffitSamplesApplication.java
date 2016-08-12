@@ -19,7 +19,7 @@
 
 package org.apereo.portal.soffits;
 
-import org.apereo.portlet.soffit.renderer.SoffitRenderConfiguration;
+import org.apereo.portlet.soffit.renderer.SoffitRendererConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.CacheManager;
@@ -31,7 +31,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
 
 @SpringBootApplication
-@Import(SoffitRenderConfiguration.class)
+@Import(SoffitRendererConfiguration.class)
 @EnableCaching
 public class SoffitSamplesApplication {
 
