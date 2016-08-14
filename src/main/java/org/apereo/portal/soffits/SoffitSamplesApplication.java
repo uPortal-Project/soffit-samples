@@ -31,17 +31,13 @@ import org.springframework.context.annotation.Import;
 import org.springframework.core.io.ClassPathResource;
 
 @SpringBootApplication
-@Import(SoffitRendererConfiguration.class)
+@Import(SoffitRendererConfiguration.class) /* Enables soffits within this application. */
 @EnableCaching
 public class SoffitSamplesApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SoffitSamplesApplication.class, args);
     }
-
-    /**
-     * Enables soffits within this application.
-     */
 
     /**
      * Tells Spring Boot to use EhCache for caching.  (Configuration in ehcache.xml)
