@@ -41,6 +41,9 @@
     <h3>Preferences:</h3>
     <pre>${preferences}</pre>
 
+    <h3>Definition:</h3>
+    <pre>${definition}</pre>
+
     <h3>Payload JSON</h3>
     <pre><%=new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(request.getAttribute("soffit"))%></pre>
 
