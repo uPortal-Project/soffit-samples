@@ -21,6 +21,12 @@
 <%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %>
 <jsp:directive.include file="/WEB-INF/soffit/include.jsp"/>
 
+<%
+    // Normally we try to favor JSTL over Java code;  perhaps 
+    // I'll have a chance to write a tag lib for this...
+    final ObjectMapper mapper = new ObjectMapper();
+%>
+
 <c:set var="n" value="${portalRequest.attributes['namespace'][0]}" />
 
 <div id="${n}">
@@ -36,15 +42,15 @@
     </ul>
 
     <h3>Bearer:</h3>
-    <pre>${bearer}</pre>
+    <pre><%=mapper.writerWithDefaultPrettyPrinter().writeValueAsString(request.getAttribute("bearer"))%></pre>
 
     <h3>Portal Request:</h3>
-    <pre>${portalRequest}</pre>
+    <pre><%=mapper.writerWithDefaultPrettyPrinter().writeValueAsString(request.getAttribute("portalRequest"))%></pre>
 
     <h3>Preferences:</h3>
-    <pre>${preferences}</pre>
+    <pre><%=mapper.writerWithDefaultPrettyPrinter().writeValueAsString(request.getAttribute("preferences"))%></pre>
 
     <h3>Definition:</h3>
-    <pre>${definition}</pre>
+    <pre><%=mapper.writerWithDefaultPrettyPrinter().writeValueAsString(request.getAttribute("definition"))%></pre>
 
 </div>
