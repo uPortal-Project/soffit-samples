@@ -19,7 +19,7 @@
 
 package org.apereo.portal.soffits;
 
-import org.apereo.portlet.soffit.renderer.SoffitRendererConfiguration;
+import org.apereo.portal.soffit.renderer.SoffitRendererConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cache.CacheManager;
