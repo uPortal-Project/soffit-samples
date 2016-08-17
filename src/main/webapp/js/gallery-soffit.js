@@ -23,7 +23,7 @@ var up = up || {};
         var gallery = $(container);
         var spinner = gallery.find(configs.selectors.spinner);
 
-        $.ajax(configs.serviceUrl, {
+        $.ajax(configs.apiUrl, {
             dataType: 'jsonp',
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error('Failed to fetch gallery images:  ' + textStatus);

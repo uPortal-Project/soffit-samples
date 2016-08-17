@@ -24,7 +24,7 @@ var up = up || {};
         var aliveTemplate = itemsContainer.find(configs.selectors.templateAlive);
         var deadTemplate = itemsContainer.find(configs.selectors.templateDead);
 
-        $.ajax(configs.serviceUrl, {
+        $.ajax(configs.apiUrl, {
             dataType: 'jsonp',
             error: function(jqXHR, textStatus, errorThrown) {
                 console.error('Failed to fetch system status information:  ' + textStatus);

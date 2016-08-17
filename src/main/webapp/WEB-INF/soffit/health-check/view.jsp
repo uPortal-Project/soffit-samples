@@ -20,7 +20,7 @@
 --%>
 <jsp:directive.include file="/WEB-INF/soffit/include.jsp"/>
 
-<c:set var="n" value="${soffit.request.windowId}" />
+<c:set var="n" value="${portalRequest.attributes['namespace'][0]}" />
 
 <style>
 #${n} .hc-spinner {
@@ -61,7 +61,7 @@
 <script type="text/javascript">
 up.jQuery(function() {
     var options = {
-        serviceUrl: "${urlBase}/api/health-check/v1-0/status"
+        apiUrl: "${urlBase}/api/health-check/v1-0/status"
     };
     up.HealthCheck.Dashboard(up.jQuery, '#${n}', options);
 });

@@ -17,7 +17,7 @@
 --%>
 <jsp:directive.include file="/WEB-INF/soffit/include.jsp"/>
 
-<c:set var="n" value="${soffit.request.windowId}" />
+<c:set var="n" value="${portalRequest.attributes['namespace'][0]}" />
 <c:set var="req" value="${pageContext.request}" />
 <c:set var="urlBase" value="${req.scheme}://${req.serverName}:${req.localPort}${req.contextPath}" />
 
@@ -79,7 +79,7 @@
 <script type="text/javascript">
     jQuery(function() {
         var options = {
-            serviceUrl: "${urlBase}/api/gallery/v1-0/images"
+            apiUrl: "${urlBase}/api/gallery/v1-0/images"
         };
         up.blueimpGallery.Gallery(up.jQuery, '#${n}', options);
     });

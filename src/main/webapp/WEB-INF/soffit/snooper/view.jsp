@@ -21,7 +21,7 @@
 <%@ page import="com.fasterxml.jackson.databind.ObjectMapper" %>
 <jsp:directive.include file="/WEB-INF/soffit/include.jsp"/>
 
-<c:set var="n" value="${soffit.request.windowId}" />
+<c:set var="n" value="${portalRequest.attributes['namespace'][0]}" />
 
 <div id="${n}">
 
@@ -38,13 +38,13 @@
     <h3>Bearer:</h3>
     <pre>${bearer}</pre>
 
+    <h3>Portal Request:</h3>
+    <pre>${portalRequest}</pre>
+
     <h3>Preferences:</h3>
     <pre>${preferences}</pre>
 
     <h3>Definition:</h3>
     <pre>${definition}</pre>
-
-    <h3>Payload JSON</h3>
-    <pre><%=new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(request.getAttribute("soffit"))%></pre>
 
 </div>
