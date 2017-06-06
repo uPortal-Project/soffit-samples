@@ -41,4 +41,11 @@
         overflowToDisk="false"
         memoryStoreEvictionPolicy="LRU"/>
 
+    <cache name="pieChartSlicesCache"
+           maxElementsInMemory="100"
+           eternal="false"
+           timeToLiveSeconds="900"
+           overflowToDisk="false"
+           memoryStoreEvictionPolicy="LRU"/>
+
 </ehcache>
