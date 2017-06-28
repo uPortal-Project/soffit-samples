@@ -70,7 +70,7 @@ public class InstagramGalleryImageService implements GalleryImageService {
     @Value("${instagram.api.url:https://api.instagram.com/v1/users/self/media/recent/?access_token=}")
     private String apiUrl;
 
-    @Value("${instagram.api.access_token}")
+    @Value("${instagram.api.access_token:''}")
     private String apiAccessToken;
 
     @Cacheable("galleryImageCache")
