@@ -61,7 +61,7 @@
             <div class="item-image" style=""></div>
             <div class="carousel-caption">
                 <h3 class="item-title"></h3>
-                <a href="" class="item-link pull-right" title=""></a>
+                <a href="" class="item-link pull-right" title="">learn more</a>
             </div>
         </div>
     </div>
@@ -81,6 +81,7 @@
 (function($) {
 
     var template = $('#${n} div.template');
+    var defaultBackground = 'background:url(${urlBase}/img/dark-background.jpg) center center; background-size:cover;';
 
     var rssFeedUrl = "${preferences.preferencesMap['carousel.rssFeedUrl'][0]}";
     if (rssFeedUrl) {
@@ -88,26 +89,31 @@
         $.get(rssFeedUrl, function(data) {
             var hasActive = false;
 
-            $(data).find('item').each(function () {
-                var el = $(this);
-                var item = template.clone();
-                var style = 'background:url('
-                        + '/uPortal/media/skins/respondr/rspace/images/college-classroom.jpg'
-                        + ') center center; background-size:cover;';
+            var xmlDoc = $.parseXML(data);
+            var rssTree = $(xmlDoc);
 
-                item.find('.item-image').attr('style', style);
-                item.find('.item-title').html(el.find('title').text());
-                var link = el.find('link');
-                if (link.size() > 0) {
-                    item.find('.item-link').attr('title', el.find('title').text())
-                        .attr('href', el.find('link').text()).html('learn more');
+            rssTree.find('item').each(function () {
+                var item = $(this);
+                var element = template.clone();
+                var background = defaultBackground;
+                var enclosures = item.find('enclosure');
+                if (enclosures.size() > 0) {
+                    background = 'background:url('
+                            + enclosures.first().attr('url')
+                            + ') center center; background-size:cover;';
                 }
-                item.removeClass('template');
-                item.insertBefore(template);
-                item.show();
+                element.find('.item-image').attr('style', background);
+                element.find('.item-title').html(item.find('title').text());
+                if (item.find('link').size() > 0) {
+                    element.find('.item-link').attr('title', item.find('title').text());
+                    element.find('.item-link').attr('href', item.find('link').text());
+                }
+                element.removeClass('template');
+                element.insertAfter(template);
+                element.show();
 
                 if (!hasActive) {
-                    item.addClass('active');
+                    element.addClass('active');
                     hasActive = true;
                 }
             });
@@ -117,8 +123,7 @@
 
     } else {
         // Instead of data, use the template to instruct the adopter
-        template.find('.item-image')
-                .attr('style', 'background:url(${urlBase}/img/dark-background.jpg) center center; background-size:cover;');
+        template.find('.item-image').attr('style', defaultBackground);
         template.find('.item-title')
                 .html('Feed not defined;  please specify a <code>carousel.rssFeedUrl</code> portlet preference.');
         template.removeClass('template').addClass('active').show();
