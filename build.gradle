@@ -10,6 +10,10 @@ buildscript {
     }
 }
 
+/*
+ * WARNING:  the 'net.researchgate.release' plugin is not working properly yet.  It produces invalid
+ * signatures.  If you bypass it -- by running '$ ./gradlew clean uploadArchives' -- you can succeed.
+ */
 plugins {
     id 'net.researchgate.release' version '2.4.0'
 }
