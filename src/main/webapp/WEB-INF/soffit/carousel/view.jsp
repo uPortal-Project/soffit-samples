@@ -61,7 +61,7 @@
             <div class="item-image" style=""></div>
             <div class="carousel-caption">
                 <h3 class="item-title"></h3>
-                <a href="" class="item-link pull-right" title="">learn more</a>
+                <a href="" class="item-link pull-right" title="" style="display: none;">learn more</a>
             </div>
         </div>
     </div>
@@ -83,6 +83,12 @@
     var template = $('#${n} div.template');
     var defaultBackground = 'background:url(${urlBase}/img/dark-background.jpg) center center; background-size:cover;';
 
+    var displayMessage = function(msg) {
+        template.find('.item-image').attr('style', defaultBackground);
+        template.find('.item-title').html(msg);
+        template.removeClass('template').addClass('active').show();
+    }
+
     var rssFeedUrl = "${preferences.preferencesMap['carousel.rssFeedUrl'][0]}";
     if (rssFeedUrl) {
 
@@ -92,41 +98,48 @@
             var xmlDoc = $.parseXML(data);
             var rssTree = $(xmlDoc);
 
-            rssTree.find('item').each(function () {
-                var item = $(this);
-                var element = template.clone();
-                var background = defaultBackground;
-                var enclosures = item.find('enclosure');
-                if (enclosures.size() > 0) {
-                    background = 'background:url('
-                            + enclosures.first().attr('url')
-                            + ') center center; background-size:cover;';
-                }
-                element.find('.item-image').attr('style', background);
-                element.find('.item-title').html(item.find('title').text());
-                if (item.find('link').size() > 0) {
-                    element.find('.item-link').attr('title', item.find('title').text());
-                    element.find('.item-link').attr('href', item.find('link').text());
-                }
-                element.removeClass('template');
-                element.insertAfter(template);
-                element.show();
+            var items = rssTree.find('item');
+            if (items.size() > 0) {
+                items.each(function () {
+                    var item = $(this);
+                    var element = template.clone();
+                    var background = defaultBackground;
+                    var enclosures = item.find('enclosure');
+                    if (enclosures.size() > 0) {
+                        background = 'background:url('
+                                + enclosures.first().attr('url')
+                                + ') center center; background-size:cover;';
+                    }
+                    element.find('.item-image').attr('style', background);
+                    element.find('.item-title').html(item.find('title').text());
+                    if (item.find('link').size() > 0) {
+                        var link = element.find('.item-link');
+                        link.attr('title', item.find('title').text());
+                        link.attr('href', item.find('link').text());
+                        link.show();
+                    }
+                    element.removeClass('template');
+                    element.insertAfter(template);
+                    element.show();
 
-                if (!hasActive) {
-                    element.addClass('active');
-                    hasActive = true;
-                }
-            });
-
-            template.remove();
+                    if (!hasActive) {
+                        element.addClass('active');
+                        hasActive = true;
+                    }
+                });
+            } else {
+                // Display a custom(?) message...
+                var customEmptyMessage = "${preferences.preferencesMap['carousel.customEmptyMessage'][0]}";
+                var messageToDisplay = customEmptyMessage
+                        ? customEmptyMessage
+                        : 'Nothing to display;  the specified feed is empty';
+                displayMessage(messageToDisplay);
+            }
         });
 
     } else {
         // Instead of data, use the template to instruct the adopter
-        template.find('.item-image').attr('style', defaultBackground);
-        template.find('.item-title')
-                .html('Feed not defined;  please specify a <code>carousel.rssFeedUrl</code> portlet preference.');
-        template.removeClass('template').addClass('active').show();
+        displayMessage('Feed not defined;  please specify a <code>carousel.rssFeedUrl</code> portlet preference.');
     }
 
     $('#${n}').carousel({ interval: false });
