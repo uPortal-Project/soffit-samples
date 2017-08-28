@@ -107,15 +107,15 @@ uploadArchives {
             }
 
             pom.project {
-                name 'uPortal'
-                packaging 'jar'
+                name 'soffit-samples'
+                packaging 'war'
                 // optionally artifactId can be defined here
-                description 'Enterprise open source portal built by and for the higher education community.'
-                url 'https://github.com/Jasig/uPortal'
+                description 'Sample Soffit applications for Apereo uPortal.'
+                url 'https://github.com/uPortal-Project/soffit-samples'
 
                 scm {
-                    connection 'scm:git@github.com:Jasig/uPortal.git'
-                    url 'https://github.com/Jasig/uPortal'
+                    connection 'scm:git@github.com:uPortal-Project/soffit-samples.git'
+                    url 'https://github.com/uPortal-Project/soffit-samples'
                 }
 
                 licenses {
