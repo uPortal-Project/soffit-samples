@@ -127,6 +127,7 @@
                         hasActive = true;
                     }
                 });
+                template.remove(); // Else users can scroll to a missing item
             } else {
                 // Display a custom(?) message...
                 var customEmptyMessage = "${preferences.preferencesMap['carousel.customEmptyMessage'][0]}";
