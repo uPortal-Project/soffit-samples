@@ -1,3 +1,7 @@
+# Soffit Samples
+
+[![Build Status](https://travis-ci.org/uPortal-Project/soffit-samples.svg?branch=master)](https://travis-ci.org/uPortal-Project/soffit-samples)
+
 This project contains several example Soffits for uPortal.  More information
 about Soffit can be found on the [Soffit project page](https://github.com/drewwills/Soffit).
 
@@ -23,4 +27,3 @@ on your machine or use the included [Gradle Wrapper](https://docs.gradle.org/cur
 ```bash
   $java -jar build/libs/soffit-samples-0.0.1-SNAPSHOT.war
 ```
-
