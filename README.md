@@ -1,5 +1,5 @@
 This project contains several example Soffits for uPortal.  More information
-about Soffit can be found on the [Soffit project page](https://github.com/drewwills/Soffit).
+about Soffit can be found in the [uPortal manual](https://jasig.github.io/uPortal/developer/soffits/).
 
 ## Building This Project
 
@@ -23,4 +23,3 @@ on your machine or use the included [Gradle Wrapper](https://docs.gradle.org/cur
 ```bash
   $java -jar build/libs/soffit-samples-0.0.1-SNAPSHOT.war
 ```
-
