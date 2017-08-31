@@ -50,7 +50,6 @@ dependencies {
     compile("org.jasig.portal:uPortal-soffit-renderer:${soffitVersion}")
     compile('org.springframework.boot:spring-boot-starter-cache')
     compile('org.springframework.boot:spring-boot-starter-web')
-    compile("org.jasig.portal:uPortal-spring:${uportalLibsVersion}")
     compile("com.github.ulisesbocchio:jasypt-spring-boot-starter:${jasyptSpringBootVersion}")
     compile("org.aspectj:aspectjweaver:${aspectjVersion}")
 
