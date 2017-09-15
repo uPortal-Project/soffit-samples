@@ -19,19 +19,34 @@
 
 package org.apereo.portal.soffits;
 
+import com.ulisesbocchio.jasyptspringboot.annotation.EnableEncryptableProperties;
 import org.apereo.portal.soffit.renderer.SoffitApplication;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfiguration;
 import org.springframework.cache.CacheManager;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.cache.ehcache.EhCacheCacheManager;
 import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.io.ClassPathResource;
 
 @SpringBootApplication
 @SoffitApplication
+@EnableAutoConfiguration(exclude = {
+        DataSourceAutoConfiguration.class,
+        HibernateJpaAutoConfiguration.class
+})
 @EnableCaching
+@EnableEncryptableProperties
+@PropertySources({
+        @PropertySource(value = "file://${portal.home}/global.properties", ignoreResourceNotFound = true),
+        @PropertySource(value = "file://${portal.home}/soffit-samples.properties", ignoreResourceNotFound = true)
+})
 public class SoffitSamplesApplication {
 
     public static void main(String[] args) {
