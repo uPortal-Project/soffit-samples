@@ -1,3 +1,7 @@
+# Soffit Samples
+
+[![Build Status](https://travis-ci.org/uPortal-Project/soffit-samples.svg?branch=master)](https://travis-ci.org/uPortal-Project/soffit-samples)
+
 This project contains several example Soffits for uPortal.  More information
 about Soffit can be found in the [uPortal manual](https://jasig.github.io/uPortal/developer/soffits/).
 
